@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "NodeSrcClose",
+  "namespace": "main.kotlin",
+  "fields": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "value",
+      "type": "float"
+    }
+  ]
+}
