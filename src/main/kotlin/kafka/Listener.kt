@@ -26,7 +26,7 @@ class Listener {
     val schema_open = Schema.Parser().parse(File("src/main/resources/avsc/node-src-open.avsc"))
     val schema_close = Schema.Parser().parse(File("src/main/resources/avsc/node-src-close.avsc"))
 
-    @KafkaListener(topics = ["src-node-open"], groupId = "src")
+    //@KafkaListener(topics = ["src-node-open"], groupId = "src")
     fun listen(message: GenericRecord) {
         currentValue=message.get("value") as Float
         logger.debug { currentValue }

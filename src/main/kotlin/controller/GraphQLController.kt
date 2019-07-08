@@ -36,14 +36,14 @@ class GraphQLController() {
                 queryModel: String
             }
             type Mutation{
-                importModel(path: String!): Int
+                importModel(path: String!): String
                 createSimpleModel(
                     path: String!,
                     labelIndex: Int,
                     numClasses: Int,
                     batchSize: Int,
                     seed: Int
-                    ): Int
+                    ): String
                 trainModel(
                     path: String!,
                     jsonPath: String!,
@@ -53,7 +53,7 @@ class GraphQLController() {
                     fitTimes: Int!,
                     evalMetric: String!,
                     passRate: Float!
-                    ): Float
+                    ): TrainingEvalResult
             }
             type TrainingEvalResult{
                 id: String,

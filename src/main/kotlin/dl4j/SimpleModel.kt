@@ -44,7 +44,7 @@ class SimpleModel(
     lateinit var model:MultiLayerNetwork
 
     fun initByImport() {
-        model = MultiLayerNetwork.load(File(modelPath), true)
+        model = MultiLayerNetwork.load(File("/home/ram4444/IdeaProjects/DL4JEngine/src/main/resources/"+modelPath), true)
     }
 
     fun initByConf(
@@ -87,12 +87,7 @@ class SimpleModel(
                 addField("value2").
                 addField("value3").
                 addField("value4").
-                addField("value5").
-                addField("value6").
-                addField("value7").
-                addField("value8").
-                addField("value9").
-                addField("value10").build()
+                addField("value5").build()
         val recordReader = JacksonLineRecordReader(fieldSelection, mapper)
         recordReader.initialize(FileSplit(ClassPathResource(jsonPathName).getFile()))
         val iterator = RecordReaderDataSetIterator(recordReader,trainingBatchSize,labelIndex,numClasses)
@@ -126,7 +121,7 @@ class SimpleModel(
 
          if(pass) {
              val saveUpdater = true                 //Updater: i.e., the state for Momentum, RMSProp, Adagrad etc. Save this if you want to train your network more in the future
-             model.save(File(modelPath), saveUpdater)
+             model.save(File("/home/ram4444/IdeaProjects/DL4JEngine/src/main/resources/"+modelPath), saveUpdater)
              logger.info("TrainingPass")
          } else {
              logger.info("TrainingNotPass")
