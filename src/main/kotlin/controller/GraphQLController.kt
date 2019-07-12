@@ -33,7 +33,12 @@ class GraphQLController() {
     //Initiate schema from somewhere
     val schema ="""
             type Query{
-                queryModel: String
+                queryModel(
+                    path: String!,
+                    value1: String!,
+                    value2: String!,
+                    value3: String!,
+                    value4: String!): SimpleModelResult
             }
             type Mutation{
                 importModel(path: String!): String
@@ -62,6 +67,12 @@ class GraphQLController() {
                 precision: Float,
                 f1: Float,
                 recall: Float
+            }
+            type SimpleModelResult{
+                model: String,
+                label: String,
+                outputIndex: Int,
+                confidence: Float
             }"""
 
     lateinit var fetchers: Map<String, List<Pair<String, DataFetcher<out Any>>>>
@@ -74,7 +85,12 @@ class GraphQLController() {
         fetchers = mapOf(
                 "Query" to
                         listOf(
-                                "queryModel" to DataFetcher{dl4jService.queryModel(it.getArgument("path"),it.getArgument("input"))}
+                                "queryModel" to DataFetcher{dl4jService.queryModel(
+                                        it.getArgument("path"),
+                                        it.getArgument("value1"),
+                                        it.getArgument("value2"),
+                                        it.getArgument("value3"),
+                                        it.getArgument("value4"))}
                         ),
                 "Mutation" to
                         listOf(

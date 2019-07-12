@@ -107,6 +107,8 @@ class SimpleModel(
         }
         var pass = false
         var eval = Evaluation(numClasses)
+        println("------------------------testData.features----------------------")
+        println(testData.features)
         var output = model.output(testData.features)
         eval.eval(testData.getLabels(), output)
         //logger.info(output.toString())
